@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="text-center">
+  <header>
+    <h1 class="text-3xl font-bold mt-5">Le super pendu !</h1>
+  </header>
+
+  <main>
+    <h2 class="text-xl m-5"> Devine le mot : </h2>
+
+ 
+    <img class="m-auto mb-5" src="static/images/pendu{{7 - data.vies}}.png" alt="">
+
+    <p class="text-xl m-5"> {{data.mot_a_afficher}} </p>
+
+    {% if data.victoire %}
+
+    <!-- Message de victoire -->
+    <h2 class="text-xl"> BRAVO ! </h2>
+    <p>Tu as trouvé le mot !</p>
+    <a href="/"><button class="bg-black hover:bg-blue-700 text-white text-sm font-bold py-1 px-3 mt-2 rounded">Recommencer</button></a>
+    
+    {% elif data.defaite %}
+
+    <!-- Message de défaite -->
+    <h2 class="text-xl"> DOMMAGE... </h2>
+    <p>Le mot était : {{data.mot_a_deviner}}</p>
+    <a href="/"><button class="bg-black hover:bg-blue-700 text-white text-sm font-bold py-1 px-3 mt-2 rounded">Recommencer</button></a>
+    
+    {% else %}
+    <!-- Formulaire de devinette -->
+    <form action="/deviner" method="post">
+      <input class="border-2 border-black" type="text" name="lettre" id="lettre" maxlength="1">
+      <button class="bg-black hover:bg-blue-700 text-white text-sm font-bold py-1 px-3 ml-2 rounded" type="submit">Devine !</button>
+    </form>
+    {% endif %}
+
+  </main>
+
+  <footer>
+
+  </footer>
+  
+</body>
+</html>
